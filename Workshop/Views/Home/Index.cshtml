@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="hero-unit">
+    <h1>twMVC - WS1 實戰營</h1>
+    <br />
+    <p class="lead">
+        利用循序漸進的方式，引導學員完成一個CMS網站，在 twMVC Workshop 課程中，您學到的不會是最新的技術，而是業界中、實務上可以立即上場的技術，我們希望藉由團對成員多年來開發各式各樣 ASP.NET MVC 的實務經驗中提取適合初學者的實戰經驗與技能。
+    </p>
+    <p><a href="http://mvc.tw" target="_blank" class="btn btn-primary btn-large">前往 twMVC 官網 »</a></p>
+</div>
+
+<!-- 最新文章 -->
+<fieldset>
+    <legend>最新文章</legend>
+    <div class="row">
+        @Html.Partial("_News")
+    </div>
+</fieldset>

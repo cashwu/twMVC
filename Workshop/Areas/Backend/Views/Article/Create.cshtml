@@ -1,0 +1,103 @@
+﻿@model Workshop.Areas.Backend.Models.ArticleViewModel
+@{
+    ViewBag.Title = "文章管理 - 建立";
+    Layout = "~/Areas/Backend/Views/Shared/_Layout.cshtml";
+}
+
+@section css {
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+}
+
+<h3>文章管理</h3>
+@using (Html.BeginForm("Create", "Article", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>建立</legend>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.CategoryID, "文章分類", new { @class = "control-label" })
+            <div class="controls">
+                @Html.DropDownList("CategoryID", String.Empty)
+                @Html.ValidationMessageFor(model => model.CategoryID)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Subject, new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(model => model.Subject, new { @class = "span8" })
+                @Html.ValidationMessageFor(model => model.Subject)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Summary, new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextAreaFor(model => model.Summary, new { @class = "span8", rows = "5" })
+                @Html.ValidationMessageFor(model => model.Summary)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.ContentText, new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextAreaFor(model => model.ContentText, new { @class = "span8", rows = "10" })
+                @Html.ValidationMessageFor(model => model.ContentText)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.PublishDate, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(p => Model.PublishDate)
+                @Html.ValidationMessageFor(model => model.PublishDate)
+            </div>
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.IsPublish, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(model => model.IsPublish)
+                @Html.ValidationMessageFor(model => model.IsPublish)
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">檔案上傳</label>
+            <div class="controls">
+                <div>
+                    <input type="file" name="Uploads[0]" />
+                    @Html.ValidationMessage("Uploads[0]")
+                </div>
+                <div>
+                    <input type="file" name="Uploads[1]" />
+                    @Html.ValidationMessage("Uploads[1]")
+                </div>
+                <div>
+                    <input type="file" name="Uploads[2]" />
+                    @Html.ValidationMessage("Uploads[2]")
+                </div>
+                <div>
+                    <input type="file" name="Uploads[3]" />
+                    @Html.ValidationMessage("Uploads[3]")
+                </div>
+                <div>
+                    <input type="file" name="Uploads[4]" />
+                    @Html.ValidationMessage("Uploads[4]")
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="form-actions">
+        <input type="submit" class="btn btn-success" value="建立" />
+        | @Html.ActionLink("回到列表", "Index")
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

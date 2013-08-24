@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Logon</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
+    <style type="text/css">
+        body
+        {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="span4 offset4 well">
+                <legend>管理後台登入</legend>
+                <div class="alert alert-error">
+                    <a class="close" data-dismiss="alert" href="#">×</a>
+                    請輸入正確的帳號或密碼!
+                </div>
+                <form method="POST" action="" accept-charset="UTF-8">
+                    <input type="text" id="username" class="span4" name="username" placeholder="帳號">
+                    <input type="password" id="password" class="span4" name="password" placeholder="密碼">
+                    <label class="checkbox">
+                        <input type="checkbox" name="remember" value="1">
+                        記住我
+                    </label>
+                    <div style="padding-top: 10px;">
+                        <button type="button" name="submit" class="btn btn-primary">登入</button>
+                        <button type="button" name="reset" class="btn">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/Backend.js"></script>
+</body>
+</html>

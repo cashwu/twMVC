@@ -1,0 +1,37 @@
+﻿@model Workshop.Models.Category
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Backend/Views/Shared/_Layout.cshtml";
+}
+
+<h3>分類管理</h3>
+
+@using (Html.BeginForm("Create", "Category", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>編輯</legend>
+
+        <div class="control-group">
+            <!-- CategoryName -->
+            @Html.LabelFor(model => model.Name, new { @class = "control-label", @for = "Name" })
+            <div class="controls">
+                @Html.EditorFor(model => model.Name, new { @class="input-xlarge" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+    </fieldset>
+    
+    <div class="form-actions">
+        <input type="submit" class="btn btn-success" value="建立" />
+        | @Html.ActionLink("回到列表", "Index")
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

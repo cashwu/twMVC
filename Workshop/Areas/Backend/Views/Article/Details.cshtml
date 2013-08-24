@@ -1,0 +1,53 @@
+﻿@model Workshop.Models.Article
+
+@{
+    ViewBag.Title = "文章管理 - 詳細內容";
+    Layout = "~/Areas/Backend/Views/Shared/_Layout.cshtml";
+}
+
+<h3>文章管理</h3>
+<fieldset>
+    <legend>詳細內容</legend>
+
+    <dl>
+        <dt>@Html.Label("文章分類", new { @class = "control-label" })</dt>
+        <dd>@Html.DisplayFor(model => model.Category.Name)</dd>
+
+        <dt>@Html.LabelFor(model => model.Subject, new { @class = "control-label" })</dt>
+        <dd>@Html.DisplayFor(model => model.Subject)</dd>
+
+        <dt>@Html.LabelFor(model => model.Summary, new { @class = "control-label" })</dt>
+        <dd>@Html.DisplayFor(model => model.Summary)</dd>
+
+        <dt>@Html.LabelFor(model => model.ContentText, new { @class = "control-label" })</dt>
+        <dd>@Html.DisplayFor(model => model.ContentText)</dd>
+
+        <dt>@Html.LabelFor(model => model.IsPublish, new { @class = "control-label" })</dt>
+        <dd>@(Model.IsPublish ? "是" : "否")</dd>
+
+        <dt>@Html.LabelFor(model => model.PublishDate, new { @class = "control-label" })</dt>
+        <dd>@Html.DisplayFor(model => model.PublishDate)</dd>
+
+        <dt>@Html.LabelFor(model => model.ViewCount, new { @class = "control-label" })</dt>
+        <dd>@Html.DisplayFor(model => model.ViewCount)</dd>
+
+        <dt>@Html.LabelFor(model => model.CreateUser, new { @class = "control-label" })</dt>
+        <dd>@Html.DisplayFor(model => model.CreateUser)</dd>
+
+        <dt>@Html.LabelFor(model => model.CreateDate, new { @class = "control-label" })</dt>
+        <dd>@Html.DisplayFor(model => model.CreateDate)</dd>
+
+        <dt>@Html.LabelFor(model => model.UpdateUser, new { @class = "control-label" })</dt>
+        <dd>@Html.DisplayFor(model => model.UpdateUser)</dd>
+
+        <dt>@Html.LabelFor(model => model.UpdateDate, new { @class = "control-label" })</dt>
+        <dd>@Html.DisplayFor(model => model.UpdateDate)</dd>
+    </dl>
+
+</fieldset>
+
+<div class="form-actions">
+    @Html.ActionLink("編輯", "Edit", new { id = Model.ID }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("回到列表", "Index", "Article")
+</div>
+

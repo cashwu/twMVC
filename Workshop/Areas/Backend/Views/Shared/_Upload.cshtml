@@ -1,0 +1,65 @@
+﻿@model Workshop.Areas.Backend.Models.ArticleViewModel
+
+<ul class="thumbnails">
+    @if (Model.Photo != null)
+    {
+        foreach (var photo in Model.Photo)
+        {
+            var id = "photo_" + photo.ID;
+            var url = Url.Action("ArticlePhoto", "Article", new { id = photo.ID, w = 170, h = 128, fit = true });
+        
+            <li id="@id" class="span6 clearfix">
+                <div class="thumbnail clearfix">
+                    <img src="@url" alt="@photo.FileName" class="pull-left span2 clearfix img-rounded" style='margin-right: 10px; width: 170px; height: 128px;'>
+                    <div class="caption" class="pull-left">
+                        <h4>
+                            <a href="@url">@photo.FileName</a>
+                        </h4>
+                        <b>檔案描述: </b>@photo.Description
+                        @Ajax.ActionLink("刪除", "DeletePhoto", "Article",
+                                         new { id = photo.ID },
+                                         new AjaxOptions
+                                         {
+                                             Confirm = "確定要刪除?", 
+                                             InsertionMode = InsertionMode.Replace, 
+                                             UpdateTargetId = id, 
+                                             OnComplete = "removePhoto(\"" + id + "\")"
+                                         }, 
+                                         new { @class = "btn btn-danger icon pull-right" })
+                    </div>
+                </div>
+            </li>
+        }
+    }
+    @*
+    <li class="span6 clearfix">
+        <div class="thumbnail clearfix">
+            <img src="http://placehold.it/320x200" alt="ALT NAME" class="pull-left span2 clearfix" style='margin-right: 10px'>
+            <div class="caption" class="pull-left">
+                <h4>
+                    <a href="#">檔案名稱</a>
+                </h4>
+                <b>檔案描述: </b>99384877
+                <a href="#myModal" class="btn btn-danger icon pull-right" data-toggle="modal">刪除</a>
+            </div>
+        </div>
+    </li>
+    <li class="span6 clearfix">
+        <div class="thumbnail clearfix">
+            <img src="http://placehold.it/320x200" alt="ALT NAME" class="pull-left span2 clearfix" style='margin-right: 10px'>
+            <div class="caption" class="pull-left">
+                <h4>
+                    <a href="#">檔案名稱</a>
+                </h4>
+                <b>檔案描述: </b>99384877
+                <a href="#myModal" class="btn btn-danger icon pull-right" data-toggle="modal">刪除</a>
+            </div>
+        </div>
+    </li>
+    *@
+</u>
+<script type="text/javascript">
+    function removePhoto(container) {
+        $("#" + container).remove();
+    }
+</script>
