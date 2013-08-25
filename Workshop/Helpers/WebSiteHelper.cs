@@ -28,11 +28,11 @@ namespace Workshop.Helpers
                     using (WorkshopEntities db = new WorkshopEntities())
                     {
                         var user = db.SystemUser.FirstOrDefault(x => x.ID == systemUserID);
-                        return (user != null) ? user.Name : "";
+                        return (user != null) ? user.Name : "系統預設";
                     }
                 }
             }
-            return "";
+            return "系統預設";
         }
 
         public static Guid CurrentUserID

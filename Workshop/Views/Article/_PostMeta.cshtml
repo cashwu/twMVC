@@ -1,8 +1,8 @@
 ﻿@model Workshop.Models.Article
 
 <p>
-    <li class="icon-user"></li>by @Model.CreateUser |
-    <li class="icon-calendar"></li>@Model.CreateDate |
+    <li class="icon-user"></li>by @Html.DisplayFor(a => a.CreateUser) |
+    <li class="icon-calendar"></li>@Html.DisplayFor(a => a.CreateDate) |
     <li class="icon-tags"></li>分類：
     <a href="#">
         <span class="label label-info">@Model.Category.Name</span>

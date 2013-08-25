@@ -10,6 +10,7 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using PagedList;
 using Workshop.Areas.Backend.Models;
+using Workshop.Helpers;
 using Workshop.Models;
 using Workshop.ViewModels;
 
@@ -61,7 +62,7 @@ namespace Workshop.Areas.Backend.Controllers
             if (ModelState.IsValid)
             {
                 article.ID = Guid.NewGuid();
-                article.CreateUser = new Guid();
+                article.CreateUser = WebSiteHelper.CurrentUserID;
                 article.CreateDate = DateTime.Now;
                 article.UpdateDate = DateTime.Now;
 
@@ -124,7 +125,7 @@ namespace Workshop.Areas.Backend.Controllers
                 instance.ContentText = article.ContentText;
                 instance.IsPublish = article.IsPublish;
                 instance.PublishDate = article.PublishDate;
-                instance.UpdateUser = new Guid();
+                instance.UpdateUser = WebSiteHelper.CurrentUserID;
                 instance.UpdateDate = DateTime.Now;
 
                 HandleFiles(instance, uploads);

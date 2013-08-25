@@ -64,7 +64,8 @@
                         @Html.DisplayFor(modelItem => item.Subject)
                     </td>
                     <td>
-                        @(item.IsPublish ? "是" : "否")
+                        @Html.DisplayFor(modelItem => item.IsPublish,"Bool")
+                        @*@(item.IsPublish ? "是" : "否")*@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.PublishDate)

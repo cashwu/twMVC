@@ -38,9 +38,14 @@ namespace Workshop.Models
             [EmailAddress]
             public string Email { get; set; }
 
+            [UIHint("SystemUserName")]
             public System.Guid CreateUser { get; set; }
+
             public System.DateTime CreateDate { get; set; }
+
+            [UIHint("SystemUserName")]
             public Nullable<System.Guid> UpdateUser { get; set; }
+            
             public System.DateTime UpdateDate { get; set; }
         }
     }

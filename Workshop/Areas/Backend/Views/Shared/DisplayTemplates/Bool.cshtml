@@ -1,0 +1,6 @@
+﻿@model bool?
+
+@if (Model.HasValue)
+{
+    @(Model.Value ? "True" : "False" )
+}

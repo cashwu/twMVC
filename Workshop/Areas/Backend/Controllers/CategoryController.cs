@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Workshop.Helpers;
 using Workshop.Models;
 using Workshop.ViewModels;
 
@@ -57,7 +58,7 @@ namespace Workshop.Areas.Backend.Controllers
             if (ModelState.IsValid)
             {
                 category.ID = Guid.NewGuid();
-                category.CreateUser = new Guid();
+                category.CreateUser = WebSiteHelper.CurrentUserID;
                 category.CreateDate = DateTime.Now;
                 category.UpdateDate = DateTime.Now;
 
@@ -95,7 +96,7 @@ namespace Workshop.Areas.Backend.Controllers
                 var original = db.Category.FirstOrDefault(x => x.ID == category.ID);
 
                 original.Name = category.Name;
-                original.UpdateUser = new Guid();
+                original.UpdateUser = WebSiteHelper.CurrentUserID;
                 original.UpdateDate = DateTime.Now;
 
                 db.Entry(original).State = EntityState.Modified;

@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Workshop.Areas.Backend.Models;
+using Workshop.Helpers;
 using Workshop.Models;
 
 namespace Workshop.Areas.Backend.Controllers
@@ -55,8 +56,8 @@ namespace Workshop.Areas.Backend.Controllers
 
                 systemuser.Salt = GenerateSalt();
                 systemuser.Password = CryptographyPassword(systemuser.Password, systemuser.Salt);
-                
-                systemuser.CreateUser = new Guid();
+
+                systemuser.CreateUser = WebSiteHelper.CurrentUserID;
                 systemuser.CreateDate = DateTime.Now;
                 systemuser.UpdateDate = DateTime.Now;
 
@@ -103,7 +104,7 @@ namespace Workshop.Areas.Backend.Controllers
                 user.Account = systemuser.Account;
                 user.Email = systemuser.Email;
 
-                user.UpdateUser = new Guid();
+                user.UpdateUser = WebSiteHelper.CurrentUserID;
                 user.UpdateDate = DateTime.Now;
 
                 db.Entry(user).State = EntityState.Modified;
@@ -207,8 +208,7 @@ namespace Workshop.Areas.Backend.Controllers
                 }
             }
 
-            //return View();
-            return RedirectToAction("Index", "Home");
+            return View();
         }
 
         public ActionResult Logout()

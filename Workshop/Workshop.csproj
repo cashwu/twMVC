@@ -217,6 +217,8 @@
     <Compile Include="Models\Category.cs">
       <DependentUpon>Workshop.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Metadata\ArticleMetadata.cs" />
+    <Compile Include="Models\Metadata\CategoryMetadata.cs" />
     <Compile Include="Models\Metadata\SystemUserMetadata.cs" />
     <Compile Include="Models\Photo.cs">
       <DependentUpon>Workshop.tt</DependentUpon>
@@ -332,7 +334,7 @@
     <Content Include="Areas\Backend\Views\Article\Delete.cshtml" />
     <Content Include="Areas\Backend\Views\Shared\EditorTemplates\DateTimePicker.cshtml" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js.map" />
-    <Content Include="Areas\Backend\Views\Shared\DisplayTemplates\SystemUserName.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SystemUserName.cshtml" />
     <EntityDeploy Include="Models\Workshop.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Workshop.Designer.cs</LastGenOutput>
@@ -352,6 +354,7 @@
     </Content>
     <Content Include="Areas\Backend\Views\Shared\_Upload.cshtml" />
     <Content Include="Areas\Backend\Views\SystemUser\Logon.cshtml" />
+    <Content Include="Areas\Backend\Views\Shared\DisplayTemplates\Bool.cshtml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Images\feed-icon-64x64.png" />
     <Content Include="Scripts\Backend.js" />
@@ -412,6 +415,7 @@
     <Content Include="Views\Article\_Photos.cshtml" />
     <Content Include="Views\Article\Hot.cshtml" />
     <Content Include="Views\Article\Search.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
