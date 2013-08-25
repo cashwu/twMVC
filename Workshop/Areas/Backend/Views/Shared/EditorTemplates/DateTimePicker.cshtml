@@ -1,4 +1,4 @@
-﻿@model DateTime
+﻿@*@model DateTime
 @{
     var mode = ViewData["mode"] != null ? (int)ViewData["mode"] : 1;
     var format = "yyyy/MM/dd hh:mm:ss";
@@ -23,10 +23,13 @@
             language: 'tw'
         });
     });
-</script>
+</script>*@
 
-@*<div id="datetimepicker_@(ViewData.TemplateInfo.HtmlFieldPrefix)" class="input-append date">
-    <input type="text" id="@(ViewData.TemplateInfo.HtmlFieldPrefix)" name="@(ViewData.TemplateInfo.HtmlFieldPrefix)" data-format="yyyy/MM/dd hh:mm:ss" value="@(ViewData.TemplateInfo.FormattedModelValue)"></input>
+<div id="datetimepicker_@(ViewData.TemplateInfo.HtmlFieldPrefix)" class="input-append date">
+    <input type="text" id="@(ViewData.TemplateInfo.HtmlFieldPrefix)" 
+           name="@(ViewData.TemplateInfo.HtmlFieldPrefix)" 
+           data-format="yyyy/MM/dd hh:mm:ss" 
+           value="@(ViewData.TemplateInfo.FormattedModelValue)"></input>
     <span class="add-on">
         <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
     </span>
@@ -38,4 +41,4 @@
             language: 'tw'
         });
     });
-</script>*@
+</script>
