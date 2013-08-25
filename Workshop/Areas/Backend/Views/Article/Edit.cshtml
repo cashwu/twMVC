@@ -12,7 +12,7 @@
 
 <h3>文章管理</h3>
 
-@using (Html.BeginForm("Edit", "Article", FormMethod.Post, new { @class = "form",enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "Article", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -50,15 +50,15 @@
             @Html.LabelFor(model => model.ContentText, new { @class = "control-label" })
             <div class="controls">
                 @*@Html.TextAreaFor(model => model.ContentText, new { @class = "span8", rows = "10" })*@
-                @Html.EditorFor(model => model.ContentText,"Html")
+                @Html.EditorFor(model => model.ContentText, "Html", new { skin = "office2003" })
                 @Html.ValidationMessageFor(model => model.ContentText)
             </div>
         </div>
 
-        <div class="control-group">
+        <div class="control-group"> 
             @Html.LabelFor(model => model.PublishDate, new { @class = "control-label" })
             <div class="controls">
-                @Html.EditorFor(model => model.PublishDate)
+                @Html.EditorFor(model => model.PublishDate, new { mode = 2 })
                 @Html.ValidationMessageFor(model => model.PublishDate)
             </div>
         </div>
@@ -73,8 +73,8 @@
 
         @Html.HiddenFor(model => model.CreateUser)
         @Html.HiddenFor(model => model.CreateDate)
-        
-        
+
+
         <div class="control-group">
             <label class="control-label">檔案上傳</label>
             <div class="controls">
@@ -85,7 +85,7 @@
             </div>
         </div>
 
-        @Html.Partial("_Upload",Model)
+        @Html.Partial("_Upload", Model)
 
     </fieldset>
 

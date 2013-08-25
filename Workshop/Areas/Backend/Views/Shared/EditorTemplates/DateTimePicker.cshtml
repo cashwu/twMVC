@@ -1,4 +1,31 @@
-﻿<div id="datetimepicker_@(ViewData.TemplateInfo.HtmlFieldPrefix)" class="input-append date">
+﻿@model DateTime
+@{
+    var mode = ViewData["mode"] != null ? (int)ViewData["mode"] : 1;
+    var format = "yyyy/MM/dd hh:mm:ss";
+    
+    if (mode == 2)
+    {
+        format = "yyyy/MM/dd";
+    }
+    var value = Model.ToString(format);
+    var id = Guid.NewGuid();
+}
+<div id="@id" class="input-append date">
+    @Html.TextBox("", value, new { data_format = format })
+    <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+    </span>
+</div>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#@id').datetimepicker({
+            language: 'tw'
+        });
+    });
+</script>
+
+@*<div id="datetimepicker_@(ViewData.TemplateInfo.HtmlFieldPrefix)" class="input-append date">
     <input type="text" id="@(ViewData.TemplateInfo.HtmlFieldPrefix)" name="@(ViewData.TemplateInfo.HtmlFieldPrefix)" data-format="yyyy/MM/dd hh:mm:ss" value="@(ViewData.TemplateInfo.FormattedModelValue)"></input>
     <span class="add-on">
         <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
@@ -11,4 +38,4 @@
             language: 'tw'
         });
     });
-</script>
+</script>*@
