@@ -1,7 +1,16 @@
-﻿<div class="span8">
-    <h4><a href="ArticleDetail.html">文章標題 1</a></h4>
-    <p>
-        Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.
-                    Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.
-    </p>
-</div>
+﻿@model IEnumerable<Workshop.Models.Article>
+
+@foreach (var item in Model)
+{
+    <div class="span8">
+        <h4>
+            @Html.ActionLink(item.Subject,"Details",new {controller = "Article",id = item.ID})
+        </h4>
+        <p>
+            @item.Summary
+        </p>
+        <p class="pull-right">
+            <i class="icon-calendar"></i> @item.CreateDate
+        </p>
+    </div>
+}

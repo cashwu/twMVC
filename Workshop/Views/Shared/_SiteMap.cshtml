@@ -1,12 +1,12 @@
 ﻿<div class="masthead">
     <ul class="nav nav-pills pull-right">
-        <li class="active"><a href="Default.html">首頁</a></li>
-        <li><a href="HotArticles.html">熱門文章</a></li>
-        <li><a href="Articles.html">文章列表</a></li>
+        <li>@Html.ActionLink("首頁", "Index", new { Controller = "Home" })</li>
+        <li>@Html.ActionLink("熱門文章", "Hot", new { Controller = "Article" })</li>
+        <li>@Html.ActionLink("文章列表", "Index", new { Controller = "Article" })</li>
         <li>
-            <form class="form-search" method="GET" action="Search.html">
+            <form class="form-search" action="@Url.Action("Search", "Article")" method="Get" >
                 <div class="input-append">
-                    <input type="text" class="input-small search-query" name="q" placeholder="搜尋關鍵字..." />
+                    <input type="text" class="input-small search-query" name="keyword" placeholder="搜尋關鍵字..." value="@ViewBag.Keyword" />
                     <button type="submit" class="btn"><i class="icon icon-search"></i></button>
                 </div>
             </form>

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Workshop.Models.Photo>    
+
+<hr/>
+<div class="span6"></div>
+<ul class="thumbnails ">
+    @foreach (var photo in Model)
+    {
+        var id = "photo_" + photo.ID;
+        var url = Url.Action("ArticlePhoto", "Article", new { id = photo.ID, w = 320, h = 240, fit = true });
+            
+        <li class="span6">
+            <div class="clearfix">
+                <img src="@url" alt="@photo.FileName" class="img-rounded" style='margin-right: 10px; width: 320px; height: 240px;'>
+            </div>
+        </li>
+    }
+</ul>

@@ -13,7 +13,7 @@ namespace Workshop.Controllers
 
         public ActionResult Index()
         {
-            return Vimew();
+            return View();
         }
 
     }

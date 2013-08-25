@@ -1,0 +1,46 @@
+﻿@model Workshop.Models.Article
+
+
+@{
+    ViewBag.Title = "文章內容";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul class="breadcrumb">
+    <li>
+        <a href="@Url.Action("Index", "Home")">首頁</a><span class="divider">/</span>
+    </li>
+    <li>
+        <a href="@Url.Action("Index", "Article")">文章列表</a><span class="divider">/</span>
+    </li>
+    <li class="current">@Model.Subject</li>
+</ul>
+
+<div id="content">
+    <div id="post">
+
+        <div class="page-header">
+            <h1 class="page-title">@Model.Subject</h1>
+        </div>
+
+        <div class="post-meta">
+            @Html.Partial("_PostMeta", Model)
+        </div>
+
+        <div class="post-entry">
+            @if (Model.Photo.Count > 0)
+            {
+                var photo = Model.Photo.FirstOrDefault();
+                var url = Url.Action("ArticlePhoto", "Article", new { id = photo.ID, w = 240, h = 180, fit = true });
+                
+                <img src="@url" alt="@photo.FileName" class="pull-right span2 clearfix img-rounded" style='margin-right: 10px; margin-bottom: 10px; width: 240px; height: 180px;'>
+            }
+
+            <span style="white-space: pre-line">@Model.ContentText</span>
+        </div>
+
+    </div>
+
+    @Html.Partial("_Photos", Model.Photo)
+
+</div>

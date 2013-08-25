@@ -1,0 +1,71 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using Workshop.ViewModels
+@model IPagedList<Workshop.Models.Article>
+
+@{
+    ViewBag.Title = "文章列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index", "Home")">首頁</a><span class="divider">/</span></li>
+    <li class="current">文章列表</li>
+</ul>
+
+<div class="text-right">
+    <form id="FormCategory" method="Get" action="@Url.Action("Index", "Article")" class="form-search">
+        分類： @Html.DropDownList("categoryID", (SelectList)ViewBag.ArticleCategories, "Select All")
+        <input type="submit" class="btn" value="送出" />
+    </form>
+</div>
+
+@foreach (var article in Model)
+{    
+    <div class="row">
+        <div class="span8">
+            <div class="row">
+                <div class="span12">
+                    <h4>
+                        <strong>
+                            @Html.ActionLink(@article.Subject, "Details", new { id = article.ID })
+                        </strong>
+                    </h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6">
+                    <p>
+                        @article.Summary
+                    </p>
+                    <p class="text-right">
+                        @Html.ActionLink("閱讀更多", "Details", new { id = article.ID }, new { @class = "btn" })
+                    </p>
+                </div>
+                <div class="span2">
+                    @if (article.Photo.Count > 0)
+                    {
+                        var photo = article.Photo.FirstOrDefault();
+                        var url = Url.Action("ArticlePhoto", "Article", new { id = photo.ID, w = 170, h = 128, fit = true });
+                        
+                        <a href="#" class="thumbnail clearfix">
+                            <img src="@url" alt="@photo.FileName" class="pull-left span2 clearfix img-rounded" style='margin-right: 10px; width: 170px; height: 128px;'>
+                        </a>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="span8">
+                    <p></p>
+                    @Html.Partial("_PostMeta", article)
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+}
+
+@Html.PagedListPager(
+    Model,
+    page => Url.Action("Index", new { categoryID = ViewBag.CategoryID, page = page }),
+    PagingOptions.Standard)

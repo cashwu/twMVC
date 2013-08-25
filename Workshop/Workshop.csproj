@@ -54,6 +54,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -198,8 +199,11 @@
     <Compile Include="Areas\Backend\Controllers\SystemUserController.cs" />
     <Compile Include="Areas\Backend\Models\ArticleViewModel.cs" />
     <Compile Include="Areas\Backend\Models\TestCustomViewModel.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Core\RssActionResult.cs" />
     <Compile Include="Extension\QueryOptionHtmlExtension.cs" />
     <Compile Include="Filters\NoIsAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -400,6 +404,12 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Home\_News.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Article\Index.cshtml" />
+    <Content Include="Views\Article\_PostMeta.cshtml" />
+    <Content Include="Views\Article\Details.cshtml" />
+    <Content Include="Views\Article\_Photos.cshtml" />
+    <Content Include="Views\Article\Hot.cshtml" />
+    <Content Include="Views\Article\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

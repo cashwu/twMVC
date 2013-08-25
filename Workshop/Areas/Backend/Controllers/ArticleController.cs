@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using PagedList;
 using Workshop.Areas.Backend.Models;
 using Workshop.Models;
 using Workshop.ViewModels;
@@ -260,5 +261,7 @@ namespace Workshop.Areas.Backend.Controllers
 
             return new EmptyResult();
         }
+
+        
     }
 }

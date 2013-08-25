@@ -1,0 +1,11 @@
+﻿@model Workshop.Models.Article
+
+<p>
+    <li class="icon-user"></li>by @Model.CreateUser |
+    <li class="icon-calendar"></li>@Model.CreateDate |
+    <li class="icon-tags"></li>分類：
+    <a href="#">
+        <span class="label label-info">@Model.Category.Name</span>
+    </a>    
+    <i class="icon-eye-open"></i>瀏覽次數：@Model.ViewCount
+</p>
