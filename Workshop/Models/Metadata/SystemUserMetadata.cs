@@ -8,12 +8,12 @@ using System.Web;
 namespace Workshop.Models
 {
     [MetadataType(typeof(SystemUserMetada))]
-    public partial class SystemUser : IValidatableObject
+    public partial class SystemUser 
     {
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            throw new NotImplementedException();
-        }
+        //public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         private class SystemUserMetada
         {

@@ -15,11 +15,12 @@ using Workshop.ViewModels;
 
 namespace Workshop.Areas.Backend.Controllers
 {
+    [Authorize]
     public class ArticleController : Controller
     {
         private WorkshopEntities db = new WorkshopEntities();
 
-        public ActionResult Index(QueryOption<Article>  queryModel)
+        public ActionResult Index(QueryOption<Article> queryModel)
         {
             var query = db.Article.AsQueryable();
 
@@ -77,7 +78,7 @@ namespace Workshop.Areas.Backend.Controllers
 
         public ActionResult Edit(Guid id)
         {
-            
+
             Article article = db.Article.Find(id);
             if (article == null)
             {
@@ -262,6 +263,6 @@ namespace Workshop.Areas.Backend.Controllers
             return new EmptyResult();
         }
 
-        
+
     }
 }

@@ -1,0 +1,71 @@
+﻿@model Workshop.Areas.Backend.Models.LogonViewModel
+@{
+    ViewBag.Title = "Logon";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Logon</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
+    <style type="text/css">
+        body
+        {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="span4 offset4 well">
+                <legend>管理後台登入</legend>
+                
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="alert alert-error">
+                        <a class="close" data-dismiss="alert" href="#">×</a>
+                        @Html.ValidationSummary()
+                    </div>
+                }
+
+                @*
+                <div class="alert alert-error">
+                    <a class="close" data-dismiss="alert" href="#">×</a>
+                    請輸入正確的帳號或密碼!
+                    @Html.ValidationSummary()
+                </div>
+                *@
+
+                @using (Html.BeginForm("Logon", "SystemUser", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.TextBoxFor(x => x.Account, new { @class = "span4", placeholder = "帳號" })
+                    @Html.ValidationMessageFor(x => x.Account)
+                    
+                    @Html.PasswordFor(x => x.Password, new { @class = "span4", placeholder = "密碼" })
+                    @Html.ValidationMessageFor(x => x.Password)
+    
+                    <label>
+                        @Html.CheckBoxFor(x => x.Remember)
+                        @Html.DisplayNameFor(x => x.Remember)
+                    </label>
+                    
+                    <div style="padding-top: 10px;">
+                        <button type="submit" name="submit" class="btn btn-primary">登入</button>
+                        <button type="button" name="reset" class="btn">取消</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/Backend.js"></script>
+</body>
+</html>

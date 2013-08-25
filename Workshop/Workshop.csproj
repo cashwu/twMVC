@@ -198,6 +198,7 @@
     <Compile Include="Areas\Backend\Controllers\HomeController.cs" />
     <Compile Include="Areas\Backend\Controllers\SystemUserController.cs" />
     <Compile Include="Areas\Backend\Models\ArticleViewModel.cs" />
+    <Compile Include="Areas\Backend\Models\LogonViewModel.cs" />
     <Compile Include="Areas\Backend\Models\TestCustomViewModel.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\FeedController.cs" />
@@ -350,6 +351,7 @@
       <LastGenOutput>Workshop.cs</LastGenOutput>
     </Content>
     <Content Include="Areas\Backend\Views\Shared\_Upload.cshtml" />
+    <Content Include="Areas\Backend\Views\SystemUser\Logon.cshtml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Images\feed-icon-64x64.png" />
     <Content Include="Scripts\Backend.js" />

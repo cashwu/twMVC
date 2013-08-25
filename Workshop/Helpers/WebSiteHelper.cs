@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using Workshop.Models;
 
 namespace Workshop.Helpers
@@ -32,6 +33,33 @@ namespace Workshop.Helpers
                 }
             }
             return "";
+        }
+
+        public static Guid CurrentUserID
+        {
+            get
+            {
+                var httpContext = HttpContext.Current;
+                var identity = httpContext.User.Identity as FormsIdentity;
+
+                if (identity == null)
+                {
+                    throw new InvalidOperationException("使用者未登入");
+                }
+
+                return Guid.Parse(identity.Ticket.UserData); ;
+            }
+        }
+
+        public static string CurrentUserName
+        {
+            get
+            {
+                var httpContext = HttpContext.Current;
+                var identity = httpContext.User.Identity as FormsIdentity;
+
+                return identity == null ? string.Empty : identity.Name;
+            }
         }
     }
 }

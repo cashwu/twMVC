@@ -10,6 +10,7 @@ using Workshop.ViewModels;
 
 namespace Workshop.Areas.Backend.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         private WorkshopEntities db = new WorkshopEntities();
@@ -59,7 +60,7 @@ namespace Workshop.Areas.Backend.Controllers
                 category.CreateUser = new Guid();
                 category.CreateDate = DateTime.Now;
                 category.UpdateDate = DateTime.Now;
-                
+
                 db.Category.Add(category);
                 db.SaveChanges();
 
