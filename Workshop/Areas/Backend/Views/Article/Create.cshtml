@@ -44,7 +44,8 @@
         <div class="control-group">
             @Html.LabelFor(model => model.ContentText, new { @class = "control-label" })
             <div class="controls">
-                @Html.TextAreaFor(model => model.ContentText, new { @class = "span8", rows = "10" })
+                @*@Html.TextAreaFor(model => model.ContentText, new { @class = "span8", rows = "10" })*@
+                @Html.EditorFor(model => model.ContentText,"Html")
                 @Html.ValidationMessageFor(model => model.ContentText)
             </div>
         </div>

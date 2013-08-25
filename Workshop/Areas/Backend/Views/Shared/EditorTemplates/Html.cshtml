@@ -1,0 +1,10 @@
+﻿@model string
+@{
+    var id = Guid.NewGuid();
+}
+@Html.TextArea("",Model,new { id })
+<script type="text/javascript">
+    (function() {
+        var editor = CKEDITOR.editor.replace('@id', { skin : 'kama' });
+    })();
+</script>

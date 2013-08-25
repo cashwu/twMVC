@@ -36,11 +36,13 @@
                 <img src="@url" alt="@photo.FileName" class="pull-right span2 clearfix img-rounded" style='margin-right: 10px; margin-bottom: 10px; width: 240px; height: 180px;'>
             }
 
-            <span style="white-space: pre-line">@Model.ContentText</span>
+            @*<span style="white-space: pre-line">Model.ContentText</span>*@
+            <span>@Html.Raw(Model.ContentText)</span>
         </div>
 
     </div>
-
-    @Html.Partial("_Photos", Model.Photo)
-
+    @if (Model.Photo.Count > 1)
+    {
+        @Html.Partial("_Photos", Model.Photo)
+    }
 </div>

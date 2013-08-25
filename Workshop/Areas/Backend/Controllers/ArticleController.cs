@@ -54,6 +54,7 @@ namespace Workshop.Areas.Backend.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Article article, HttpPostedFileBase[] uploads)
         {
@@ -111,6 +112,7 @@ namespace Workshop.Areas.Backend.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit(ArticleViewModel article, HttpPostedFileBase[] uploads)
         {
             CheckFiles(uploads);
