@@ -1,5 +1,6 @@
 ﻿@using PagedList;
 @using PagedList.Mvc;
+@using Workshop.Helpers
 @using Workshop.ViewModels
 @model IPagedList<Workshop.Models.Article>
 
@@ -13,22 +14,30 @@
     <li class="current">文章列表</li>
 </ul>
 
-<div class="text-right">
+@*<div class="text-right">
     <form id="FormCategory" method="Get" action="@Url.Action("Index", "Article")" class="form-search">
         分類： @Html.DropDownList("categoryID", (SelectList)ViewBag.ArticleCategories, "Select All")
         <input type="submit" class="btn" value="送出" />
     </form>
+</div>*@
+<div class="text-right">
+    <form id="FormCategory" method="GET" action="@Url.Action("Index", "Article", new { categoryName = "" })" class="form-search">
+    分類： @Html.DropDownList("categoryName", (SelectList)ViewBag.ArticleCategories, string.Empty)
+    <input type="submit" class="btn" value="送出" />
+    </form>
 </div>
 
 @foreach (var article in Model)
-{    
+{
+    var articleUrl = Url.ArticleUrl(article);
     <div class="row">
         <div class="span8">
             <div class="row">
                 <div class="span12">
                     <h4>
                         <strong>
-                            @Html.ActionLink(@article.Subject, "Details", new { id = article.ID })
+                            @*@Html.ActionLink(@article.Subject, "Details", new { id = article.ID })*@
+                            <a href="@articleUrl">@article.Subject</a>
                         </strong>
                     </h4>
                 </div>
@@ -39,7 +48,8 @@
                         @article.Summary
                     </p>
                     <p class="text-right">
-                        @Html.ActionLink("閱讀更多", "Details", new { id = article.ID }, new { @class = "btn" })
+                        @*@Html.ActionLink("閱讀更多", "Details", new { id = article.ID }, new { @class = "btn" })*@
+                        <a class="btn" href="@articleUrl">閱讀更多</a>
                     </p>
                 </div>
                 <div class="span2">
@@ -65,7 +75,13 @@
     <hr>
 }
 
-@Html.PagedListPager(
+    @*@Html.PagedListPager(
     Model,
     page => Url.Action("Index", new { categoryID = ViewBag.CategoryID, page = page }),
+    PagingOptions.Standard)*@
+
+
+@Html.PagedListPager(
+    Model,
+    page => Url.Action("Index", new { categoryID = ViewBag.CategoryName, page = page }),
     PagingOptions.Standard)

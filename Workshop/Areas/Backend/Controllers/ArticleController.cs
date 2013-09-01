@@ -16,11 +16,20 @@ using Workshop.ViewModels;
 
 namespace Workshop.Areas.Backend.Controllers
 {
+
+    /// <summary>
+    /// Class ArticleController.
+    /// </summary>
     [Authorize]
     public class ArticleController : Controller
     {
         private WorkshopEntities db = new WorkshopEntities();
-
+        
+        /// <summary>
+        /// Indexes the specified query model.
+        /// </summary>
+        /// <param name="queryModel">The query model.</param>
+        /// <returns>ActionResult.</returns>
         public ActionResult Index(QueryOption<Article> queryModel)
         {
             var query = db.Article.AsQueryable();
@@ -166,6 +175,7 @@ namespace Workshop.Areas.Backend.Controllers
             base.Dispose(disposing);
         }
 
+        #region Common
         private void CheckFiles(HttpPostedFileBase[] uploads)
         {
             if (uploads != null)
@@ -234,6 +244,7 @@ namespace Workshop.Areas.Backend.Controllers
                 upload.SaveAs(Path.Combine(path, photo.FileName));
             }
         }
+        #endregion
 
         public ActionResult ArticlePhoto(Guid id, int w, int h)
         {

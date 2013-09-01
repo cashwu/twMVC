@@ -168,6 +168,7 @@ namespace Workshop.Areas.Backend.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [HandleError(ExceptionType = typeof(HttpAntiForgeryException),View = "ErrorCC")]
         public ActionResult Logon(LogonViewModel logonModel)
         {
             if (ModelState.IsValid)

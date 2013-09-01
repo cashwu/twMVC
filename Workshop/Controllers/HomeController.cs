@@ -11,6 +11,7 @@ namespace Workshop.Controllers
     {
         private WorkshopEntities db = new WorkshopEntities();
 
+        [OutputCache(CacheProfile = "Home")]
         public ActionResult Index()
         {
             //測試 ddl

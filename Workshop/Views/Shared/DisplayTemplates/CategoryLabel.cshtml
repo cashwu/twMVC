@@ -1,0 +1,12 @@
+﻿@using Workshop.Helpers
+@using Workshop.Models
+@model Category
+
+@if (Model != null)
+{
+    var url = Url.CategoryUrl(Model);
+    
+    <a href="@url">
+        <span class="label label-info"> @Model.Name</span>
+    </a> 
+}

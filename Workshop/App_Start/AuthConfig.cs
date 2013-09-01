@@ -6,8 +6,15 @@ using Microsoft.Web.WebPages.OAuth;
 
 namespace Workshop
 {
+
+    /// <summary>
+    /// Class AuthConfig.
+    /// </summary>
     public static class AuthConfig
     {
+        /// <summary>
+        /// Registers the authentication.
+        /// </summary>
         public static void RegisterAuth()
         {
             // 若要讓此網站的使用者使用其他網站 (如 Microsoft、Facebook 和 Twitter) 的帳戶登入，

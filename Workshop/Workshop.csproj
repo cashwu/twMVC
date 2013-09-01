@@ -41,7 +41,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Clutch">
+      <HintPath>..\packages\Clutch.1.0.4794.26126\lib\net40\Clutch.dll</HintPath>
+    </Reference>
+    <Reference Include="Clutch.Diagnostics.EntityFramework">
+      <HintPath>..\packages\Clutch.Diagnostics.EntityFramework.1.0.4845.23385\lib\net40\Clutch.Diagnostics.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah.Mvc">
+      <HintPath>..\packages\Elmah.MVC.2.1.1\lib\net40\Elmah.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.2.0.1.2\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="PagedList">
       <HintPath>..\packages\PagedList.1.16.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
@@ -200,12 +215,18 @@
     <Compile Include="Areas\Backend\Models\ArticleViewModel.cs" />
     <Compile Include="Areas\Backend\Models\LogonViewModel.cs" />
     <Compile Include="Areas\Backend\Models\TestCustomViewModel.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Core\RssActionResult.cs" />
+    <Compile Include="Extension\LogHelper.cs" />
+    <Compile Include="Extension\StringExtensions.cs" />
+    <Compile Include="Extension\UrlHelperExtensions.cs" />
     <Compile Include="Extension\QueryOptionHtmlExtension.cs" />
+    <Compile Include="Filters\ElmahHandledErrorLoggerFilter.cs" />
     <Compile Include="Filters\NoIsAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -246,6 +267,10 @@
     <Compile Include="ViewModels\QueryOption.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Elmah.Errors\ElmahErrors.txt" />
+    <Content Include="App_Readme\Elmah.SqlServer.sql" />
+    <Content Include="App_Readme\Elmah.SqlServer.txt" />
+    <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Content\Backend.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-responsive.css" />
@@ -333,6 +358,8 @@
     <Content Include="Areas\Backend\Views\Article\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\Article\Delete.cshtml" />
     <Content Include="Areas\Backend\Views\Shared\EditorTemplates\DateTimePicker.cshtml" />
+    <Content Include="Images\404.jpg" />
+    <Content Include="Images\warning.png" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js.map" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\CHANGES.html" />
@@ -678,6 +705,7 @@
     <Content Include="Scripts\ckeditor\skins\v2\skin.js" />
     <Content Include="Scripts\ckeditor\skins\v2\templates.css" />
     <Content Include="Scripts\ckeditor\themes\default\theme.js" />
+    <Content Include="Scripts\Common.js" />
     <Content Include="Views\Shared\DisplayTemplates\SystemUserName.cshtml" />
     <EntityDeploy Include="Models\Workshop.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -704,6 +732,14 @@
     <Content Include="Scripts\ckeditor\ckeditor.php" />
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
     <Content Include="Areas\Backend\Views\Shared\EditorTemplates\Html.cshtml" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\PublishProfiles\DepolyToLocalIIS.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Images\feed-icon-64x64.png" />
     <Content Include="Scripts\Backend.js" />
@@ -765,10 +801,13 @@
     <Content Include="Views\Article\Hot.cshtml" />
     <Content Include="Views\Article\Search.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Article\Archive.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CategoryLabel.cshtml" />
+    <Content Include="Views\Shared\ErrorCC.cshtml" />
+    <Content Include="Views\Errors\Index.cshtml" />
+    <Content Include="Views\Errors\PageNotFound.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -791,13 +830,12 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>21912</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:16366/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>http://localhost:8088</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

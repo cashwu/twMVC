@@ -1,4 +1,4 @@
-﻿@model Workshop.Models.Article
+﻿@*@model Workshop.Models.Article
 
 <p>
     <li class="icon-user"></li>by @Html.DisplayFor(a => a.CreateUser) |
@@ -7,5 +7,14 @@
     <a href="#">
         <span class="label label-info">@Model.Category.Name</span>
     </a>    
+    <i class="icon-eye-open"></i>瀏覽次數：@Model.ViewCount
+</p>*@
+
+@model Workshop.Models.Article
+
+<p>
+    <i class="icon-user"></i>by @Html.DisplayFor(x => Model.CreateUser) | 
+    <i class="icon-calendar"></i>@Html.DisplayFor(x => Model.PublishDate) | 
+    <i class="icon-tags"></i>分類：@Html.DisplayFor(x => x.Category, "CategoryLabel") | 
     <i class="icon-eye-open"></i>瀏覽次數：@Model.ViewCount
 </p>

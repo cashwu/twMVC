@@ -3,14 +3,24 @@
         <li>@Html.ActionLink("首頁", "Index", new { Controller = "Home" })</li>
         <li>@Html.ActionLink("熱門文章", "Hot", new { Controller = "Article" })</li>
         <li>@Html.ActionLink("文章列表", "Index", new { Controller = "Article" })</li>
+        @*<li>
+        <form class="form-search" action="@Url.Action("Search", "Article")" method="Get" >
+                <div class="input-append">
+                    <input type="text" class="input-small search-query" name="keyword" placeholder="搜尋關鍵字..." value="@ViewBag.Keyword" />
+                    <button type="submit" class="btn"><i class="icon icon-search"></i></button>
+                </div>
+            </form>
+        </li>*@
+        <li>@Html.ActionLink("今日文章", "Archive", new { Controller = "Article", year = DateTime.Now.Year, month = DateTime.Now.Month, day = DateTime.Now.Day })</li>
         <li>
-            <form class="form-search" action="@Url.Action("Search", "Article")" method="Get" >
+            <form class="form-search" action="@Url.Action("Search", "Article")" method="GET" >
                 <div class="input-append">
                     <input type="text" class="input-small search-query" name="keyword" placeholder="搜尋關鍵字..." value="@ViewBag.Keyword" />
                     <button type="submit" class="btn"><i class="icon icon-search"></i></button>
                 </div>
             </form>
         </li>
+
     </ul>
     <h3 class="muted">twMVC Workshop#1</h3>
 </div>

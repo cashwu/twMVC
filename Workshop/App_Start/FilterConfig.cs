@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
+using Workshop.Filters;
 
 namespace Workshop
 {
@@ -7,6 +8,7 @@ namespace Workshop
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
+            filters.Add(new ElmahHandledErrorLoggerFilter());
             filters.Add(new HandleErrorAttribute());
         }
     }
