@@ -36,52 +36,52 @@ namespace Workshop
             );
         }
 
-        //protected void Application_Error(object sender, EventArgs e)
-        //{
-        //    // 發生未處理錯誤時執行的程式碼
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            // 發生未處理錯誤時執行的程式碼
 
-        //    var app = (MvcApplication)sender;
-        //    var ex = app.Server.GetLastError();
+            var app = (MvcApplication)sender;
+            var ex = app.Server.GetLastError();
 
-        //    var context = app.Context;
-        //    context.Response.Clear();
-        //    context.ClearError();
+            var context = app.Context;
+            context.Response.Clear();
+            context.ClearError();
 
-        //    var httpException = ex as HttpException;
-        //    if (httpException == null)
-        //    {
-        //        httpException = new HttpException(null, ex);
-        //    }
+            var httpException = ex as HttpException;
+            if (httpException == null)
+            {
+                httpException = new HttpException(null, ex);
+            }
 
-        //    var routeData = new RouteData();
+            var routeData = new RouteData();
 
-        //    routeData.Values["controller"] = "Errors";
-        //    routeData.Values["action"] = "Index";
+            routeData.Values["controller"] = "Errors";
+            routeData.Values["action"] = "Index";
 
-        //    routeData.Values["exception"] = ex;
-        //    routeData.Values["from_Application_Error_Event"] = true;
+            routeData.Values["exception"] = ex;
+            routeData.Values["from_Application_Error_Event"] = true;
 
-        //    if (httpException != null)
-        //    {
-        //        switch (httpException.GetHttpCode())
-        //        {
-        //            case 404:
-        //                routeData.Values["action"] = "PageNotFound";
-        //                break;
-        //            default:
-        //                routeData.Values["action"] = "Index";
-        //                break;
-        //        }
-        //    }
+            if (httpException != null)
+            {
+                switch (httpException.GetHttpCode())
+                {
+                    case 404:
+                        routeData.Values["action"] = "PageNotFound";
+                        break;
+                    default:
+                        routeData.Values["action"] = "Index";
+                        break;
+                }
+            }
 
-        //    // Pass exception details to the target error View.
-        //    routeData.Values.Add("error", ex.Message);
+            // Pass exception details to the target error View.
+            routeData.Values.Add("error", ex.Message);
 
-        //    // Avoid IIS7 getting in the middle
-        //    context.Response.TrySkipIisCustomErrors = true;
-        //    IController controller = new ErrorsController();
-        //    controller.Execute(new RequestContext(new HttpContextWrapper(context), routeData));
-        //}
+            // Avoid IIS7 getting in the middle
+            context.Response.TrySkipIisCustomErrors = true;
+            IController controller = new ErrorsController();
+            controller.Execute(new RequestContext(new HttpContextWrapper(context), routeData));
+        }
 
 
         void ErrorLog_Filtering(object sender, Elmah.ExceptionFilterEventArgs e)

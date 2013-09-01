@@ -740,6 +740,8 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\PublishProfiles\DepolyToLocalIIS.pubxml" />
+    <None Include="Properties\PublishProfiles\twmvc-azure - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\twmvc-azure - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Images\feed-icon-64x64.png" />
     <Content Include="Scripts\Backend.js" />
