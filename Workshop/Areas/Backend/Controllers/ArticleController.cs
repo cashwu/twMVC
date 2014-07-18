@@ -26,6 +26,7 @@ namespace Workshop.Areas.Backend.Controllers
         private WorkshopEntities db = new WorkshopEntities();
         
         /// <summary>
+        /// test
         /// Indexes the specified query model.
         /// </summary>
         /// <param name="queryModel">The query model.</param>
